@@ -4,6 +4,8 @@
         <meta charset="utf-8">
         <title>My Portfolio</title>
         <link rel="stylesheet" href="final.css" type="text/css">
+
+
         <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -13,19 +15,19 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+
 <link href="https://fonts.googleapis.com/css2?family=Playball&display=swap" rel="stylesheet">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+
 <link href="https://fonts.googleapis.com/css2?family=Tangerine:wght@700&display=swap" rel="stylesheet">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+
 <link href="https://fonts.googleapis.com/css2?family=Arapey&display=swap" rel="stylesheet">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> -->
+
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300&display=swap" rel="stylesheet">
     </head>
 
@@ -36,7 +38,7 @@
 
             <div class="me">
                 
-                <img id="me" src="me.jpeg " alt="placeholder">
+                <img id="me" src="me.jpeg " alt="My picture">
                 
                 <h1 id="my-name" >SUKHMANPREET KAUR MALHI</h1> 
                 <p id="desc">Front-end developer</p>
@@ -138,19 +140,19 @@
 
 
                     <label for="name">NAME:</label><br>
-                    <input type="text" name="name" id="name" required>
+                    <input type="text" name="name" id="name" required placeholder="NAME">
                     <br>
                     <br>
                     <label for="mail">EMAIL:</label><br>
-                    <input type="email" name="mail" id="mail" required>
+                    <input type="email" name="mail" id="mail" required placeholder="EMAIL">
                     <br>
                     <br>
                     <label for="address">ADDRESS:</label><br>
-                    <input type="text" name="address" id="address" required>
+                    <input type="text" name="address" id="address" required placeholder="ADDRESS">
                     <br>
                     <br>
                     <label for="cities">CITY:</label><br>
-                    <input type="text" list="cities" name="cities">
+                    <input type="text" list="cities" name="cities" placeholder="CITY" required>
                     <datalist id="cities">
                         <option value="Toronto">
                         <option value="Vancouver">
@@ -163,7 +165,7 @@
                     <br>
 
                     <label for="code">POSTAL CODE:</label><br>
-                    <input type="text" name="code" id="code" pattern="^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$">
+                    <input type="text" name="code" id="code" pattern="^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$" required placeholder="POSTAL CODE">
                     <br>
                     <br><br>
                     <label for="radio">REASON FOR CONTACTING:</label><br> <BR>
@@ -179,7 +181,7 @@
                     <br>
                     <br>
                     <label for="hourly-rate" style="display: none" id="rate-label">HOURLY RATE in CAD</label>
-                    <input type="number" name="hourly-rate" id="hourly-rate" value="hourly-rate" style="display: none" >
+                    <input type="number" name="hourly-rate" id="hourly-rate" value="hourly-rate" style="display: none"  placeholder="HOURLY RATE (in $)" >
 
 
                     <script>
@@ -198,50 +200,47 @@
 
                     </script>
                     <div id="errors"></div>
+                   
 
    
                     <script>
                             function validate()
                             {
+                               var radio=document.getElementById("hiring");
+
+                               if (hiring.checked){
+                                let field=document.getElementById("hourly-rate");
+                                let input=field.value;
                                
+                                    if(input>50)
+                                    {
+                                        document.getElementById("errors").innerHTML=" ";
+                                        document.getElementById('errors').style.display='none';
+                                  
+                                        return true;                   
+                                   
+                                    }
+                                    else if (input<=50)
+                                    {
 
-                               
+                                        document.getElementById("errors").innerHTML="The hourly rate should be more than $50";
+                                        document.getElementById('errors').style.display='block';
 
-                                let form=document.getElementById("hourly-rate");
-                                let input=form.value;
-                               
-                                if(input>50)
-                                {
-                                    document.getElementById("errors").innerHTML=" ";
-                                    document.getElementById('errors').style.display='none';
-   
-                                    return true;                   
-
-                                    
-                                }
-                                else
-                                {
-
-                                    document.getElementById("errors").innerHTML="The hourly rate should be more than $50";
-                                    document.getElementById('errors').style.display='block';
-                             
-                                    
-
-
-                                    return false
+                                        return false
                      
+                                    }
 
                                 }
 
-                                
+                                return true;                               
                                 
                             }
-                            </script>
+                        </script>
 
                     <br>
 
                     <label for="msg">MESSAGE:</label> <br>
-                    <textarea id="msg" required></textarea>
+                    <textarea id="msg" required placeholder="(Please enter here the message that you want to send)"></textarea>
                     <br><br>
 
        
